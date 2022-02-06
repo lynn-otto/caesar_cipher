@@ -1,3 +1,15 @@
+def correct_values?(string, integer)
+  unless string.instance_of?(String)
+    puts "Error: Expected string as first value."
+    return false
+  end
+  unless integer.instance_of?(Integer)
+    puts "Error: Expected integer as second value."
+    return false
+  end
+  return true
+end
+
 def letter?(character)
   character.match?(/[A-Za-z]/) && character.length == 1
 end
@@ -29,22 +41,15 @@ def caesar_cipher_single_letter(letter,shift)
 end
 
 def caesar_cipher(message, shift)
-  if message.instance_of?(String)
-    if shift.instance_of?(Integer)
-      encrypted_message = message[0,message.length]
-      for index in (0...message.length) do
-        encrypted_message[index] = caesar_cipher_single_letter(encrypted_message[index],shift)
-      end
-      return encrypted_message
-    else
-      puts("Error: No integer was entered.")
-      return nil
+  if correct_values?(message,shift)
+    encrypted_message = message[0,message.length]
+    for index in (0...message.length) do
+      encrypted_message[index] = caesar_cipher_single_letter(encrypted_message[index],shift)
     end
-  else
-    puts("Error: No string was entered.")
-    return nil
+    return encrypted_message
   end
 end
 
+puts correct_values?("Hello",3)
 
-
+puts caesar_cipher("Hello!",3)
