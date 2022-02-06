@@ -1,3 +1,7 @@
+def letter?(character)
+  character.match?(/[A-Za-z]/) && character.length == 1
+end
+
 def capital?(letter)
   return letter == letter.upcase
 end
@@ -13,14 +17,17 @@ def caesar_cipher_single_letter_upcase(letter, shift)
 end
 
 def caesar_cipher_single_letter(letter,shift)
-  if capital?(letter)
-    return caesar_cipher_single_letter_upcase(letter,shift)
+  if letter?(letter)
+    if capital?(letter)
+      return caesar_cipher_single_letter_upcase(letter,shift)
+    else
+      return caesar_cipher_single_letter_downcase(letter,shift)
+    end
   else
-    return caesar_cipher_single_letter_downcase(letter,shift)
+    return letter
   end
 end
 
-def letter?(character)
-  character.match?(/[A-Za-z]/)
-end
+
+
 
