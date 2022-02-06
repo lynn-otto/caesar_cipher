@@ -28,6 +28,11 @@ def caesar_cipher_single_letter(letter,shift)
   end
 end
 
-
-
-
+def caesar_cipher(message, shift)
+  encrypted_message = message[0,message.length]
+  for index in (0...message.length) do
+    puts encrypted_message[index]
+    encrypted_message[index] = caesar_cipher_single_letter(encrypted_message[index],shift)
+  end
+  return encrypted_message
+end
