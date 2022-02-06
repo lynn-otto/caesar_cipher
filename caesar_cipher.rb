@@ -20,3 +20,7 @@ def caesar_cipher_single_letter(letter,shift)
   end
 end
 
+def letter?(character)
+  character.match?(/[A-Za-z]/)
+end
+
