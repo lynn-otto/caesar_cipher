@@ -49,7 +49,3 @@ def caesar_cipher(message, shift)
     return encrypted_message
   end
 end
-
-puts correct_values?("Hello",3)
-
-puts caesar_cipher("Hello!",3)
