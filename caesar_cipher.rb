@@ -29,10 +29,22 @@ def caesar_cipher_single_letter(letter,shift)
 end
 
 def caesar_cipher(message, shift)
-  encrypted_message = message[0,message.length]
-  for index in (0...message.length) do
-    puts encrypted_message[index]
-    encrypted_message[index] = caesar_cipher_single_letter(encrypted_message[index],shift)
+  if message.instance_of?(String)
+    if shift.instance_of?(Integer)
+      encrypted_message = message[0,message.length]
+      for index in (0...message.length) do
+        encrypted_message[index] = caesar_cipher_single_letter(encrypted_message[index],shift)
+      end
+      return encrypted_message
+    else
+      puts("Error: No integer was entered.")
+      return nil
+    end
+  else
+    puts("Error: No string was entered.")
+    return nil
   end
-  return encrypted_message
 end
+
+
+
